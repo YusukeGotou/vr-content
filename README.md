@@ -12,31 +12,56 @@ This plugin offers the following features:
 - Embed 360° photos with customizable parameters.
 - Embed 360° videos with autoplay and loop options.
 - Includes Japanese language support for VR mode instructions.
+- Easier shortcode options (`vr_photo` / `vr_video`) in addition to existing ones.
+- Optional `yaw` parameter for simpler orientation settings.
+- Helpful message output when `src` is missing.
 
 ## Installation
 1. Download the plugin files and place them in the `/wp-content/plugins/` directory of your WordPress installation.
 2. Activate the "VR-Photo-Video" plugin from the WordPress admin panel.
 
 ## Usage
-Once the plugin is activated, you can use it to embed 360° photos and videos into your WordPress posts or pages using shortcodes. Here's how to use the main functionalities:
+Once the plugin is activated, you can embed 360° photos and videos into WordPress posts/pages with shortcodes.
 
 ### Embedding 360° Photos
-To embed a 360° photo, use the following shortcode:
+You can use either shortcode name:
 
-- `src`: Replace with the URL of your 360° photo.
-- `rotation`: Set the initial rotation of the photo.
+- `[photo_360 ...]`
+- `[vr_photo ...]`
 
-You can also customize the width, height, and animation for the photo.
+Example:
+
+```text
+[vr_photo src="https://example.com/photo.jpg" yaw="-130" width="100%" height="400px"]
+```
+
+Photo options:
+- `src` (required): URL to your 360° photo.
+- `rotation`: 3D rotation vector (default: `0 -130 0`).
+- `yaw`: simpler horizontal angle setting (overrides `rotation` when set).
+- `width`, `height`: scene size.
+- `duration`, `from_rotation`, `to_rotation`: optional rotation animation settings.
 
 ### Embedding 360° Videos
-To embed a 360° video, use the following shortcode:
+You can use either shortcode name:
 
-- `src`: Replace with the URL of your 360° video.
-- `rotation`: Set the initial rotation of the video.
-- `autoplay`: Set to "true" for autoplay.
-- `loop`: Set to "true" for looping.
+- `[video_360 ...]`
+- `[vr_video ...]`
 
-You can also customize the width and height of the video.
+Example:
+
+```text
+[vr_video src="https://example.com/video.mp4" yaw="-130" autoplay="true" loop="true" controls="false"]
+```
+
+Video options:
+- `src` (required): URL to your 360° video.
+- `rotation`: 3D rotation vector (default: `0 -130 0`).
+- `yaw`: simpler horizontal angle setting (overrides `rotation` when set).
+- `width`, `height`: scene size.
+- `autoplay`: `true`/`false`.
+- `loop`: `true`/`false`.
+- `controls`: `true`/`false` to display native video controls.
 
 ## Japanese VR Mode Message
 The plugin includes a feature to display a Japanese message when entering VR mode. The message provides instructions for using VR headsets or entering fullscreen mode on desktop.
